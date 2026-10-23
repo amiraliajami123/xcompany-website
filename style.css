@@ -704,3 +704,49 @@ body.english .about-text {
     font-size: 26px;
   }
 }
+/* XTube Pro promotional section */
+.xtube-promo {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: center;
+  gap: 32px;
+  margin: 40px auto;
+  padding: 28px;
+  max-width: 1200px;
+  color: #fff;
+  background: linear-gradient(135deg, #190707, #090909 65%);
+  border: 1px solid rgba(255, 45, 45, 0.45);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.xtube-promo-content h2 {
+  margin: 10px 0;
+  font-size: clamp(28px, 4vw, 42px);
+}
+
+.xtube-promo-content p:not(.eyebrow) {
+  color: #d1d1d1;
+  line-height: 1.8;
+}
+
+.xtube-promo-image {
+  display: block;
+  min-width: 0;
+}
+
+.xtube-promo-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid #4b2020;
+}
+
+@media (max-width: 700px) {
+  .xtube-promo {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 20px;
+  }
+}
