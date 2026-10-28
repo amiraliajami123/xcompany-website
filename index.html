@@ -1,314 +1,584 @@
-
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0b0b0b">
-  <meta name="description" content="وب‌سایت رسمی X COMPANY؛ اپلیکیشن‌ها، بازی‌ها و اخبار ما.">
-  <title>X COMPANY | وب‌سایت رسمی</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="X Company — دنیایی از برنامه‌ها، بازی‌ها و فناوری. دانلود XTube برای ویندوز.">
+  <title>X Company | Official Website</title>
+
+  <style>
+    :root {
+      --bg: #090909;
+      --panel: #151515;
+      --red: #ff2638;
+      --text: #f5f5f5;
+      --muted: #aaa;
+      --border: #292929;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Tahoma, Arial, sans-serif;
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(9, 9, 9, .94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      direction: ltr;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--red);
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    nav a {
+      color: #ddd;
+      transition: color .2s;
+    }
+
+    nav a:hover {
+      color: var(--red);
+    }
+
+    .hero {
+      padding: 85px 0 70px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at top, rgba(255, 38, 56, .15), transparent 60%);
+    }
+
+    .eyebrow {
+      color: var(--red);
+      font-size: 13px;
+      letter-spacing: 2px;
+      direction: ltr;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 7vw, 66px);
+      line-height: 1.3;
+      margin: 15px 0;
+    }
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 11px 23px;
+      border-radius: 9px;
+      font-weight: bold;
+      border: 1px solid var(--border);
+      transition: transform .2s, background .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: white;
+      border-color: var(--red);
+    }
+
+    .btn-secondary {
+      background: #171717;
+    }
+
+    section {
+      padding: 55px 0;
+      scroll-margin-top: 90px;
+    }
+
+    .section-heading {
+      margin-bottom: 25px;
+    }
+
+    .section-heading h2 {
+      font-size: 28px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .download-banner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 25px;
+      padding: 32px;
+      border: 1px solid #542027;
+      border-radius: 18px;
+      background:
+        radial-gradient(ellipse at left, rgba(255, 38, 56, .17), transparent 65%),
+        #121212;
+    }
+
+    .version {
+      display: inline-block;
+      direction: ltr;
+      color: #ff8b95;
+      background: #351419;
+      border: 1px solid #64212a;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .download-banner h3 {
+      font-size: 29px;
+      margin-bottom: 8px;
+    }
+
+    .download-banner p {
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    .download-side {
+      text-align: center;
+      min-width: 150px;
+    }
+
+    .xtube-icon {
+      width: 78px;
+      height: 78px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 12px;
+      border-radius: 20px;
+      background: var(--red);
+      color: white;
+      font-size: 30px;
+      font-weight: 900;
+      direction: ltr;
+      box-shadow: 0 8px 35px #ff263833;
+    }
+
+    .download-side small {
+      display: block;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 23px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .card:hover {
+      border-color: #71303a;
+      transform: translateY(-3px);
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      background: #321217;
+      color: var(--red);
+      border-radius: 12px;
+      font-size: 23px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 7px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card a.text-link {
+      display: inline-block;
+      color: #ff6572;
+      margin-top: 14px;
+      font-size: 13px;
+    }
+
+    .about {
+      background: #101010;
+      border-block: 1px solid var(--border);
+    }
+
+    .about-content {
+      max-width: 760px;
+    }
+
+    .about-content p {
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .contact-box {
+      padding: 25px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    footer {
+      padding: 27px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-brand {
+      color: white;
+      direction: ltr;
+    }
+
+    .footer-brand span {
+      color: var(--red);
+    }
+
+    @media (max-width: 760px) {
+      .navbar {
+        padding: 15px 0;
+        flex-direction: column;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 10px 17px;
+      }
+
+      .hero {
+        padding: 60px 0 45px;
+      }
+
+      .download-banner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 24px 18px;
+      }
+
+      .download-banner p {
+        margin: auto;
+      }
+
+      .download-side {
+        min-width: 0;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <header class="header">
-    <a class="logo" href="#home">X <span>COMPANY</span></a>
+  <header>
+    <div class="container navbar">
+      <a class="logo" href="#home" aria-label="X Company Home">
+        X <span>COMPANY</span>
+      </a>
 
-    <button class="menu-button" id="menuButton" aria-label="باز کردن منو">
-      ☰
-    </button>
-
-    <nav id="navigation">
-      <a href="#home" data-fa="خانه" data-en="Home">خانه</a>
-      <a href="#apps" data-fa="اپلیکیشن‌ها" data-en="Apps">اپلیکیشن‌ها</a>
-      <a href="#store" data-fa="فروشگاه" data-en="Store">فروشگاه</a>
-      <a href="#games" data-fa="بازی‌ها" data-en="Games">بازی‌ها</a>
-      <a href="#news" data-fa="اخبار" data-en="News">اخبار</a>
-      <a href="#about" data-fa="درباره ما" data-en="About">درباره ما</a>
-      <a href="#support" data-fa="پشتیبانی" data-en="Support">پشتیبانی</a>
-    </nav>
-
-    <button id="languageButton" class="language-button">English</button>
+      <nav aria-label="منوی اصلی">
+        <a href="#home">خانه</a>
+        <a href="#apps">برنامه‌ها</a>
+        <a href="#games">بازی‌ها</a>
+        <a href="#news">اخبار</a>
+        <a href="#about">درباره ما</a>
+        <a href="#support">پشتیبانی</a>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <div class="hero-content">
-        <p class="eyebrow" data-fa="به دنیای X خوش آمدید"
-           data-en="WELCOME TO THE WORLD OF X">
-          به دنیای X خوش آمدید
+      <div class="container">
+        <div class="eyebrow">INNOVATION STARTS HERE</div>
+        <h1>به دنیای <span>X Company</span> خوش آمدید</h1>
+        <p>
+          برنامه‌ها، بازی‌ها و پروژه‌های دیجیتال X Company را کشف کنید.
+          ما در حال ساخت تجربه‌های تازه برای کاربران هستیم.
         </p>
 
-        <h1>X COMPANY</h1>
+        <div class="actions">
+          <a class="btn btn-primary" href="#apps">مشاهده برنامه‌ها</a>
+          <a class="btn btn-secondary" href="#about">درباره X Company</a>
+        </div>
+      </div>
+    </section>
 
-        <p class="hero-text"
-           data-fa="ایده‌های بزرگ، محصولات خلاقانه و تجربه‌های جدید؛ همه در یک مجموعه."
-           data-en="Big ideas, creative products, and new experiences — all in one place.">
-          ایده‌های بزرگ، محصولات خلاقانه و تجربه‌های جدید؛ همه در یک مجموعه.
-        </p>
-
-        <div class="hero-buttons">
-          <a class="button primary" href="#apps"
-             data-fa="مشاهده محصولات" data-en="Explore Products">
-            مشاهده محصولات
-          </a>
-          <a class="button secondary" href="#about"
-             data-fa="درباره X COMPANY" data-en="About X COMPANY">
-            درباره X COMPANY
-          </a>
+    <section id="download">
+      <div class="container">
+        <div class="section-heading">
+          <h2>دانلود جدیدترین برنامه</h2>
+          <p>نسخهٔ منتشرشدهٔ XTube برای ویندوز</p>
         </div>
 
-        <p class="slogan" data-fa="اول کاربر، بعد پول"
-           data-en="Users First, Money Second">
-          اول کاربر، بعد پول
-        </p>
-      </div>
+        <div class="download-banner">
+          <div>
+            <span class="version">VERSION 6.0.0 · WINDOWS</span>
+            <h3>XTube Desktop</h3>
+            <p>
+              نسخهٔ دسکتاپ XTube را دریافت کنید و تجربهٔ تماشای
+              ویدئو را در کامپیوتر خود امتحان کنید.
+            </p>
 
-      <div class="hero-symbol" aria-hidden="true">X</div>
-    </section>
-<section class="xtube-promo" id="xtube-pro">
-  <div class="xtube-promo-content">
-    <p class="eyebrow">X COMPANY PRESENTS</p>
-    <h2>XTube Pro 2.0.0</h2>
-    <p>
-      Discover XTube Pro — video browsing, search,
-      favorites, and a dedicated video experience.
-    </p>
-    <a
-      class="button primary"
-      href="https://github.com/amiraliajami123/xcompany-website/releases/tag/v6.0.0
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Get XTube Pro
-    </a>
-  </div>
+            <div class="actions" style="justify-content:flex-start">
+              <a
+                class="btn btn-primary"
+                href="https://github.com/amiraliajami123/xcompany-website/releases/tag/v6.0.0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                دریافت XTube 6.0.0
+              </a>
 
-  <a
-    class="xtube-promo-image"
-    href="https://github.com/amiraliajami123/xcompany-website/releases/tag/v2.0.0"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="View XTube Pro release"
-  >
-    <img
-      src="assets/xtube-pro-promo.png"
-      alt="XTube Pro 2.0.0 promotional banner"
-    >
-  </a>
-</section>
-    <section class="product-search-section" id="productSearch">
-      <div class="search-heading">
-        <p class="eyebrow" data-fa="مرکز محصولات X" data-en="X PRODUCT DISCOVERY">مرکز محصولات X</p>
-        <h2 data-fa="دنبال چه محصولی می‌گردی؟" data-en="What are you looking for?">دنبال چه محصولی می‌گردی؟</h2>
-        <p data-fa="اپلیکیشن‌ها، بازی‌ها و پروژه‌های X COMPANY را جست‌وجو کن." data-en="Search X COMPANY apps, games, and projects.">اپلیکیشن‌ها، بازی‌ها و پروژه‌های X COMPANY را جست‌وجو کن.</p>
-        <label class="product-search-box">
-          <span aria-hidden="true">⌕</span>
-          <input id="productSearchInput" type="search" autocomplete="off" placeholder="مثلاً XTube یا X Combat" data-fa-placeholder="مثلاً XTube یا X Combat" data-en-placeholder="e.g. XTube or X Combat" aria-label="جست‌وجوی محصولات" />
-          <button id="productSearchClear" type="button" data-fa="پاک کردن" data-en="Clear">پاک کردن</button>
-        </label>
-      </div>
-      <div id="productSearchResults" class="product-search-results" aria-live="polite"></div>
-    </section>
+              <a
+                class="btn btn-secondary"
+                href="https://github.com/amiraliajami123/xcompany-website/releases"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                همهٔ نسخه‌ها
+              </a>
+            </div>
+          </div>
 
-    <section class="section" id="apps">
-      <div class="section-heading">
-        <p class="eyebrow">OUR PRODUCTS</p>
-        <h2 data-fa="اپلیکیشن‌های ما" data-en="Our Apps">اپلیکیشن‌های ما</h2>
-        <p data-fa="ابزارهایی برای جست‌وجو، تماشا و ارتباط."
-           data-en="Tools for searching, watching, and communicating.">
-          ابزارهایی برای جست‌وجو، تماشا و ارتباط.
-        </p>
-      </div>
-
-      <div class="cards">
-        <article class="card">
-          <div class="card-icon">⌕</div>
-          <h3>AmirX Browser</h3>
-          <p data-fa="مرورگر اختصاصی برای گشت‌وگذار در وب."
-             data-en="A dedicated browser for exploring the web.">
-            مرورگر اختصاصی برای گشت‌وگذار در وب.
-          </p>
-          <span class="status" data-fa="در حال توسعه" data-en="In Development">
-            در حال توسعه
-          </span>
-        </article>
-
-        <article class="card">
-          <div class="card-icon">▶</div>
-          <h3>XTube</h3>
-          <p data-fa="پلتفرم ویدیویی برای تماشای محتوا و اشتراک‌گذاری."
-             data-en="A video platform for watching and sharing content.">
-            پلتفرم ویدیویی برای تماشای محتوا و اشتراک‌گذاری.
-          </p>
-          <a class="text-link" href="https://amirxvideo.onrender.com"
-             target="_blank" rel="noopener noreferrer"
-             data-fa="مشاهده پروژه ↗" data-en="Visit Project ↗">
-            مشاهده پروژه ↗
-          </a>
-        </article>
-
-        <article class="card">
-          <div class="card-icon">✉</div>
-          <h3>XMail</h3>
-          <p data-fa="ایده‌ای برای سرویس ایمیل اختصاصی X."
-             data-en="An idea for a dedicated X email service.">
-            ایده‌ای برای سرویس ایمیل اختصاصی X.
-          </p>
-          <span class="status" data-fa="در حال توسعه" data-en="In Development">
-            در حال توسعه
-          </span>
-        </article>
-      </div>
-    </section>
-
-    <section class="section store-section" id="store">
-      <div class="section-heading">
-        <p class="eyebrow">X COMPANY STORE</p>
-        <h2 data-fa="فروشگاه X" data-en="X Store">فروشگاه X</h2>
-        <p data-fa="محلی برای معرفی محصولات و دانلودهای رسمی."
-           data-en="A place for official products and downloads.">
-          محلی برای معرفی محصولات و دانلودهای رسمی.
-        </p>
-      </div>
-
-      <div class="store-banner">
-        <div>
-          <h3 data-fa="فروشگاه به‌زودی" data-en="Store Coming Soon">
-            فروشگاه به‌زودی
-          </h3>
-          <p data-fa="محصولات، ابزارها و امکانات جدید در راه‌اند."
-             data-en="New products, tools, and features are on the way.">
-            محصولات، ابزارها و امکانات جدید در راه‌اند.
-          </p>
+          <div class="download-side">
+            <div class="xtube-icon">X▶</div>
+            <strong>XTube</strong>
+            <small>برای Windows</small>
+          </div>
         </div>
-        <span class="store-x">X</span>
       </div>
     </section>
 
-    <section class="section" id="games">
-      <div class="section-heading">
-        <p class="eyebrow">X COMPANY GAMES</p>
-        <h2 data-fa="بازی‌های ما" data-en="Our Games">بازی‌های ما</h2>
-        <p data-fa="ماجراجویی‌های تازه در دنیای بازی."
-           data-en="New adventures in the world of gaming.">
-          ماجراجویی‌های تازه در دنیای بازی.
-        </p>
-      </div>
+    <section id="apps">
+      <div class="container">
+        <div class="section-heading">
+          <h2>برنامه‌های X Company</h2>
+          <p>پروژه‌های نرم‌افزاری ما</p>
+        </div>
 
-      <article class="game-card">
-        <div class="game-art">X<span>COMBAT</span></div>
-        <div class="game-info">
-          <span class="status" data-fa="در حال توسعه" data-en="In Development">
-            در حال توسعه
-          </span>
-          <h3>X COMBAT</h3>
-          <p data-fa="یک پروژه اکشن از X COMPANY با هدف ارائه تجربه‌ای هیجان‌انگیز."
-             data-en="An action game project by X COMPANY, designed for an exciting experience.">
-            یک پروژه اکشن از X COMPANY با هدف ارائه تجربه‌ای هیجان‌انگیز.
-          </p>
-          <a href="#support" class="text-link"
-             data-fa="دنبال کردن اخبار بازی ↗" data-en="Follow Game News ↗">
-            دنبال کردن اخبار بازی ↗
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon">▶</div>
+            <h3>XTube</h3>
+            <p>پلتفرم ویدئویی X Company با نسخهٔ دسکتاپ ویندوز.</p>
+            <a class="text-link"
+               href="https://github.com/amiraliajami123/xcompany-website/releases/tag/v6.0.0">
+              مشاهدهٔ نسخه‌ها ←
+            </a>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">⌕</div>
+            <h3>AmirX Search</h3>
+            <p>پروژهٔ جست‌وجو و مرور وب از مجموعهٔ X Company.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">✉</div>
+            <h3>XMail</h3>
+            <p>ایدهٔ ارتباطات دیجیتال در مجموعهٔ پروژه‌های X.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="games">
+      <div class="container">
+        <div class="section-heading">
+          <h2>بازی‌ها</h2>
+          <p>بازی‌های در حال توسعهٔ X Company</p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon">✦</div>
+            <h3>X Combat</h3>
+            <p>پروژهٔ بازی سه‌بعدی X Company برای کامپیوتر.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🎮</div>
+            <h3>X Play</h3>
+            <p>ایده‌ای برای گسترش تجربه‌های بازی در مجموعهٔ X.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">X</div>
+            <h3>پروژه‌های آینده</h3>
+            <p>برای معرفی بازی‌های جدید، این بخش را به‌روزرسانی کنید.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="news">
+      <div class="container">
+        <div class="section-heading">
+          <h2>اخبار و به‌روزرسانی‌ها</h2>
+          <p>جدیدترین نسخه‌ها و اطلاعیه‌ها</p>
+        </div>
+
+        <div class="card">
+          <span class="version">RELEASE</span>
+          <h3>XTube 6.0.0 منتشر شد</h3>
+          <p>برای مشاهدهٔ جزئیات نسخه و فایل‌های منتشرشده، صفحهٔ رسمی ریلیز را ببینید.</p>
+          <a class="text-link"
+             href="https://github.com/amiraliajami123/xcompany-website/releases/tag/v6.0.0"
+             target="_blank"
+             rel="noopener noreferrer">
+            مشاهده در GitHub ←
           </a>
         </div>
-      </article>
+      </div>
     </section>
 
-    <section class="section" id="news">
-      <div class="section-heading">
-        <p class="eyebrow">LATEST UPDATES</p>
-        <h2 data-fa="آخرین اخبار" data-en="Latest News">آخرین اخبار</h2>
-        <p data-fa="خبرهای محصولات و پروژه‌های X COMPANY."
-           data-en="Updates about X COMPANY products and projects.">
-          خبرهای محصولات و پروژه‌های X COMPANY.
+    <section class="about" id="about">
+      <div class="container about-content">
+        <div class="section-heading">
+          <h2>درباره X Company</h2>
+        </div>
+        <p>
+          X Company نام مجموعه‌ای از پروژه‌های نرم‌افزاری، وب‌سایت‌ها
+          و بازی‌های در حال توسعه است.
+        </p>
+        <p>
+          هدف این وب‌سایت معرفی پروژه‌ها و فراهم‌کردن دسترسی آسان به
+          نسخه‌های منتشرشدهٔ آن‌هاست.
         </p>
       </div>
-
-      <article class="card news-card">
-        <span class="news-date" data-fa="اخبار رسمی" data-en="Official Updates">
-          اخبار رسمی
-        </span>
-        <h3 data-fa="به‌زودی خبرهای جدید منتشر می‌شوند"
-            data-en="New updates are coming soon">
-          به‌زودی خبرهای جدید منتشر می‌شوند
-        </h3>
-        <p data-fa="این بخش برای اطلاع‌رسانی درباره نسخه‌ها، پروژه‌ها و رویدادهای آینده است."
-           data-en="This section will share news about releases, projects, and future events.">
-          این بخش برای اطلاع‌رسانی درباره نسخه‌ها، پروژه‌ها و رویدادهای آینده است.
-        </p>
-      </article>
     </section>
 
-    <section class="section about-section" id="about">
-      <div class="section-heading">
-        <p class="eyebrow">WHO WE ARE</p>
-        <h2 data-fa="درباره X COMPANY" data-en="About X COMPANY">
-          درباره X COMPANY
-        </h2>
+    <section id="support">
+      <div class="container">
+        <div class="section-heading">
+          <h2>پشتیبانی</h2>
+          <p>برای گزارش مشکل یا مشاهدهٔ کد پروژه‌ها از GitHub استفاده کنید.</p>
+        </div>
+
+        <div class="contact-box">
+          <h3>مخزن رسمی پروژه</h3>
+          <p style="color:var(--muted);margin:8px 0 16px">
+            کدها، نسخه‌ها و اطلاعات پروژه در مخزن X Company قرار دارند.
+          </p>
+          <a
+            class="btn btn-primary"
+            href="https://github.com/amiraliajami123/xcompany-website"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            باز کردن GitHub
+          </a>
+        </div>
       </div>
-
-      <p class="about-text"
-         data-fa="X COMPANY یک برند مستقل برای توسعه ایده‌ها، نرم‌افزارها و بازی‌هاست. هدف ما ساخت محصولات کاربردی، خلاقانه و قابل‌دسترسی برای کاربران است."
-         data-en="X COMPANY is an independent brand focused on ideas, software, and games. Our goal is to build useful, creative, and accessible products.">
-        X COMPANY یک برند مستقل برای توسعه ایده‌ها، نرم‌افزارها و بازی‌هاست. هدف ما ساخت محصولات کاربردی، خلاقانه و قابل‌دسترسی برای کاربران است.
-      </p>
-    </section>
-
-    <section class="section support-section" id="support">
-      <div class="section-heading">
-        <p class="eyebrow">WE ARE HERE TO HELP</p>
-        <h2 data-fa="پشتیبانی" data-en="Support">پشتیبانی</h2>
-        <p data-fa="پیام خود را در فرم زیر بنویسید."
-           data-en="Write your message in the form below.">
-          پیام خود را در فرم زیر بنویسید.
-        </p>
-      </div>
-
-      <form id="supportForm" class="support-form">
-        <label for="userName" data-fa="نام شما" data-en="Your Name">نام شما</label>
-        <input id="userName" name="name" required maxlength="80"
-               placeholder="نام" data-fa-placeholder="نام"
-               data-en-placeholder="Name">
-
-        <label for="userEmail" data-fa="ایمیل (اختیاری)" data-en="Email (optional)">
-          ایمیل (اختیاری)
-        </label>
-        <input id="userEmail" name="email" type="email" maxlength="120"
-               placeholder="example@email.com">
-
-        <label for="userMessage" data-fa="پیام شما" data-en="Your Message">
-          پیام شما
-        </label>
-        <textarea id="userMessage" name="message" required maxlength="2000"
-                  rows="5" placeholder="پیام خود را بنویسید..."
-                  data-fa-placeholder="پیام خود را بنویسید..."
-                  data-en-placeholder="Write your message..."></textarea>
-
-        <button type="submit" class="button primary"
-                data-fa="ثبت پیام آزمایشی" data-en="Test Message">
-          ثبت پیام آزمایشی
-        </button>
-
-        <p id="formMessage" class="form-message" aria-live="polite"></p>
-        <p class="form-note"
-           data-fa="این فرم فعلاً آزمایشی است و پیام را به سرور ارسال نمی‌کند."
-           data-en="This form is a demo and does not send messages to a server yet.">
-          این فرم فعلاً آزمایشی است و پیام را به سرور ارسال نمی‌کند.
-        </p>
-      </form>
     </section>
   </main>
 
-  <footer class="footer">
-    <a class="logo" href="#home">X <span>COMPANY</span></a>
-    <p data-fa="ساخته‌شده با علاقه توسط X COMPANY"
-       data-en="Made with passion by X COMPANY">
-      ساخته‌شده با علاقه توسط X COMPANY
-    </p>
-    <p>© <span id="year"></span> X COMPANY. All rights reserved.</p>
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-brand">© <span>X</span> Company</div>
+      <div>ساخته‌شده با علاقه به فناوری</div>
+      <a href="#home">بازگشت به بالا ↑</a>
+    </div>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
+```
